@@ -3,8 +3,15 @@ from urllib.request import urlretrieve
 import pandas as pd
 import os
 
+base_url = "http://oasis.caiso.com/oasisapi/SingleZip"
+query_name = "?queryname=PRC_INTVL_LMP"
+time_range = "&startdatetime=20190201T08:00-0000&enddatetime=20190602T08:00-0000"
+query_params = "&version=1&market_run_id=RTM&grp_type=ALL_APNODES&resultformat=6"
+# build full caiso url
+target_url = base_url + query_name + time_range + query_params
+
 zip_file_path = 'data/temp.zip'
-target_url = "http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_INTVL_LMP&startdatetime=20190201T08:00-0000&enddatetime=20190602T08:00-0000&version=1&market_run_id=RTM&grp_type=ALL_APNODES&resultformat=6"
+zip_directory = 'data'
 
 
 def download_csv_file(data_url: str, file_path: str):
@@ -45,16 +52,16 @@ def find_csv_files(search_directory: str):
         list of files that end in .csv
     """
     csv_files = []
-    for file in os.listdir(search_directory):
-        if file.endswith(".csv"):
-            csv_files.append(os.path.join(search_directory, file))
+    for csv_file in os.listdir(search_directory):
+        if csv_file.endswith(".csv"):
+            csv_files.append(os.path.join(search_directory, csv_file))
     return csv_files
 
 
 download_csv_file(target_url, zip_file_path)
 unzip_csv(zip_file_path)
 
-for file in find_csv_files("data"):
+for file in find_csv_files(zip_directory):
     df = pd.read_csv(file)
     print(df.head())
     print(df.columns)

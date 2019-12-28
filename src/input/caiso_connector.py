@@ -10,7 +10,7 @@ query_params = "&version=1&market_run_id=RTM&grp_type=ALL_APNODES&resultformat=6
 # build full caiso url
 target_url = BASE_URL + query_name + time_range + query_params
 print(target_url)
-ZIP_DIRECTORY = 'src/data'
+ZIP_DIRECTORY = 'src/input/data'
 
 
 def download_csv_file(data_url: str, directory_path: str):

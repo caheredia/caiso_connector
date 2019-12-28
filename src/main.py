@@ -1,4 +1,5 @@
 import pandas as pd
+
 from src.input.caiso_connector import (
     download_csv_file,
     unzip_csv,
@@ -18,3 +19,5 @@ if __name__ == "__main__":
     print(df.columns)
 
     delete_data_files(ZIP_DIRECTORY)
+
+

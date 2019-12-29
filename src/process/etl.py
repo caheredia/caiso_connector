@@ -11,12 +11,14 @@ from src.input.caiso_connector import (
     target_url
 )
 
+DATABASE_FILENAME = "src/output/lmp.db"
+
 # Connect to database
-conn = sqlite3.connect("src/output/lmp.db")
+conn = sqlite3.connect(DATABASE_FILENAME)
 
 if __name__ == "__main__":
     # Extract
-    for date in pd.date_range("2019-11-01", "2019-11-29"):
+    for date in pd.date_range("2019-10-01", "2019-11-29"):
         start_time = date.isoformat()[:-3].replace('-', '')
         end_time = (date + timedelta(days=1)).isoformat()[:-3].replace('-', '')
         target = f"http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_LMP&startdatetime={start_time}-0000&enddatetime={end_time}-0000&version=1&market_run_id=DAM&grp_type=ALL_APNODES&resultformat=6"

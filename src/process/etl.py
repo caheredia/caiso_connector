@@ -16,7 +16,7 @@ conn = sqlite3.connect("src/output/lmp.db")
 
 if __name__ == "__main__":
     # Extract
-    for date in pd.date_range("2019-11-01", "2019-11-02"):
+    for date in pd.date_range("2019-11-01", "2019-11-29"):
         start_time = date.isoformat()[:-3].replace('-', '')
         end_time = (date + timedelta(days=1)).isoformat()[:-3].replace('-', '')
         target = f"http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_LMP&startdatetime={start_time}-0000&enddatetime={end_time}-0000&version=1&market_run_id=DAM&grp_type=ALL_APNODES&resultformat=6"
@@ -32,6 +32,7 @@ if __name__ == "__main__":
         df = df[df["LMP_TYPE"] == "LMP"].drop(columns=['LMP_TYPE'])
 
         # Load
+        print(f"adding {start_time}")
         df.to_sql("lmp", conn, if_exists="append", index=False)
 
         delete_data_files(ZIP_DIRECTORY)

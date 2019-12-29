@@ -68,6 +68,3 @@ def delete_data_files(search_directory: str):
     """
     for temp_file in os.listdir(search_directory):
         os.remove(os.path.join(search_directory, temp_file))
-
-# "http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_INTVL_LMP&startdatetime=20190201T00:00-0000&enddatetime=20190206T00:00-0000&version=1&market_run_id=RTM&grp_type=ALL_APNODES&resultformat=6
-# "http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_LMP&startdatetime=20190201T00:00-0000&enddatetime=20190203T00:00-0000&version=1&market_run_id=DAM&grp_type=ALL_APNODES&resultformat=6

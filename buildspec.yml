@@ -10,11 +10,12 @@ phases:
       # - pip3 install --upgrade pip
       # - pip3 install poetry==0.12.17
       - apt-get update -y
-      - cat /proc/version
+      - apt-get install -y sqlite3
   build:
     commands:
       - echo Build started on `date`
+      - install sqlite3
   post_build:
     commands:
       - echo Build completed on `date`
-      - apt-get install sqlite3
+

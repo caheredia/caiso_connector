@@ -10,7 +10,7 @@ phases:
       # - pip3 install --upgrade pip
       # - pip3 install poetry==0.12.17
       - cat /proc/version
-      - yum install sqlite
+      - apk install sqlite
   build:
     commands:
       - echo Build started on `date`

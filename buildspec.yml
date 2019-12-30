@@ -19,5 +19,6 @@ phases:
       - echo Build completed on `date`
       - poetry config settings.virtualenvs.create false
       - poetry install --no-dev
+      - cd /codebuild/output/src335088285/src/github.com/caheredia/caiso_connector
       - python -m pytest tests
 

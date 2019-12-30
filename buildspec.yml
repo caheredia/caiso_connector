@@ -7,8 +7,8 @@ phases:
   pre_build:
     commands:
       - echo Starting build commands
-      # - pip3 install --upgrade pip
-      # - pip3 install poetry==0.12.17
+      - pip3 install --upgrade pip
+      - pip3 install poetry==0.12.17
       - apt-get install -y sqlite3
   build:
     commands:
@@ -17,4 +17,6 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - poetry config settings.virtualenvs.create false
+      - poetry install --no-dev
 

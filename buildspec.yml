@@ -19,4 +19,5 @@ phases:
       - echo Build completed on `date`
       - poetry config settings.virtualenvs.create false
       - poetry install --no-dev
+      - python -m pytest tests
 

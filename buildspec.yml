@@ -6,17 +6,27 @@ phases:
       python: 3.8
   pre_build:
     commands:
+      - echo Logging in to Amazon ECR....
+      - aws --version
+      # login to Elastic container registry
+      - eval $(aws ecr get-login --region us-east-1 --no-include-email | sed 's|https://||')
+      - REPOSITORY_URI=<YOUR ECR REPOSITORY URI HERE>
+      - IMAGE_TAG=<YOUR IMAGE TAG HERE>
+  build:
+    commands:
+      - echo Build started on `date`
       - echo Starting build commands
       - pip3 install --upgrade pip
       - pip3 install poetry==0.12.17
       - apt-get install -y sqlite3
-  build:
-    commands:
-      - echo Build started on `date`
-      - sqlite3 --version
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
-      - poetry config settings.virtualenvs.create false
-      - poetry install --no-dev
+      - echo Pushing the Docker image...
+      - docker image ls -a
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+
 

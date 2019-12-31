@@ -2,7 +2,7 @@
 However, we are assuming `unit` in this context is at the module level.
 We are testing the behavior of code not the implementation."""
 import os
-from src.input.caiso_connector import (
+from src.caiso_connector import (
     ZIP_DIRECTORY,
     download_csv_file,
     unzip_csv,

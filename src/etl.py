@@ -2,13 +2,12 @@ import pandas as pd
 import sqlite3
 from datetime import timedelta
 
-from src.input.caiso_connector import (
+from src.caiso_connector import (
     download_csv_file,
     unzip_csv,
     delete_data_files,
     find_csv_files,
-    ZIP_DIRECTORY,
-    target_url
+    ZIP_DIRECTORY
 )
 
 DATABASE_FILENAME = "src/output/lmp.db"

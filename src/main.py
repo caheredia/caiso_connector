@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.input.caiso_connector import (
+from src.caiso_connector import (
     download_csv_file,
     unzip_csv,
     delete_data_files,

@@ -9,6 +9,7 @@ python = "^3.7"
 requests = "2.22.0"
 pytest = "5.3.2"
 pandas = "0.25.3"
+numpy = "1.18.0"
 fastapi = "^0.45.0"
 
 [tool.poetry.dev-dependencies]

@@ -10,7 +10,7 @@ phases:
       - aws --version
       # login to Elastic container registry
       - eval $(aws ecr get-login --region us-west-2 --no-include-email | sed 's|https://||')
-      - REPOSITORY_URI=763096341704.dkr.ecr.us-west-2.amazonaws.com/cristian/casio
+      - REPOSITORY_URI=763096341704.dkr.ecr.us-west-2.amazonaws.com/caheredia/caiso_connector
       - IMAGE_TAG=1.0
   build:
     commands:

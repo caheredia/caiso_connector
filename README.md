@@ -6,6 +6,12 @@ Connect to CAISO API and pull down data
 - Enter container shell `docker exec -it <mycontainer> bash`
 
 # Todo 
-- flatten the directory structure
 - add tests for fastapi 
 - create etls for fastapi  
+
+
+# References 
+- [Docker image suited for python app](https://pythonspeed.com/articles/base-image-python-docker-images/)
+- [Install SQLite on a specific OS](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
+- [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)
+- [OASIS API DOCS](http://www.caiso.com/Documents/OASISFrequentlyAskedQuestions.pdf#search=OASIS%20API)

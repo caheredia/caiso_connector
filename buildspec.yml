@@ -9,7 +9,7 @@ phases:
       - echo Logging in to Amazon ECR....
       - aws --version
       # login to Elastic container registry
-      - eval $(aws ecr get-login --region us-east-1 --no-include-email | sed 's|https://||')
+      - eval $(aws ecr get-login --region us-west-2 --no-include-email | sed 's|https://||')
       - REPOSITORY_URI=763096341704.dkr.ecr.us-west-2.amazonaws.com/cristian/casio
       - IMAGE_TAG=1.0
   build:
@@ -18,7 +18,6 @@ phases:
       - echo Starting build commands
       - pip3 install --upgrade pip
       - pip3 install poetry==0.12.17
-      - apt-get install -y sqlite3
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG

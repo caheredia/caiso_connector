@@ -10,8 +10,8 @@ phases:
       - aws --version
       # login to Elastic container registry
       - eval $(aws ecr get-login --region us-east-1 --no-include-email | sed 's|https://||')
-      - REPOSITORY_URI=<YOUR ECR REPOSITORY URI HERE>
-      - IMAGE_TAG=<YOUR IMAGE TAG HERE>
+      - REPOSITORY_URI=763096341704.dkr.ecr.us-west-2.amazonaws.com/cristian/casio
+      - IMAGE_TAG=1.0
   build:
     commands:
       - echo Build started on `date`

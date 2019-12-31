@@ -62,6 +62,14 @@ version = "3.0.4"
 
 [[package]]
 category = "main"
+description = "Composable command line interface toolkit"
+name = "click"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "7.0"
+
+[[package]]
+category = "main"
 description = "Cross-platform colored terminal text."
 marker = "python_version >= \"3.3\" and sys_platform == \"win32\" or sys_platform == \"win32\""
 name = "colorama"
@@ -104,6 +112,23 @@ version = "0.45.0"
 [package.dependencies]
 pydantic = ">=0.32.2,<2.0.0"
 starlette = "0.12.9"
+
+[[package]]
+category = "main"
+description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
+name = "h11"
+optional = false
+python-versions = "*"
+version = "0.9.0"
+
+[[package]]
+category = "main"
+description = "A collection of framework independent HTTP protocol utils."
+marker = "sys_platform != \"win32\" and sys_platform != \"cygwin\" and platform_python_implementation != \"pypy\""
+name = "httptools"
+optional = false
+python-versions = "*"
+version = "0.0.13"
 
 [[package]]
 category = "main"
@@ -695,6 +720,30 @@ version = "1.25.7"
 
 [[package]]
 category = "main"
+description = "The lightning-fast ASGI server."
+name = "uvicorn"
+optional = false
+python-versions = "*"
+version = "0.11.1"
+
+[package.dependencies]
+click = ">=7.0.0,<8.0.0"
+h11 = ">=0.8,<0.10"
+httptools = "0.0.13"
+uvloop = ">=0.14.0"
+websockets = ">=8.0.0,<9.0.0"
+
+[[package]]
+category = "main"
+description = "Fast implementation of asyncio event loop on top of libuv"
+marker = "sys_platform != \"win32\" and sys_platform != \"cygwin\" and platform_python_implementation != \"pypy\""
+name = "uvloop"
+optional = false
+python-versions = "*"
+version = "0.14.0"
+
+[[package]]
+category = "main"
 description = "Measures number of Terminal column cells of wide-character codes"
 name = "wcwidth"
 optional = false
@@ -708,6 +757,14 @@ name = "webencodings"
 optional = false
 python-versions = "*"
 version = "0.5.1"
+
+[[package]]
+category = "main"
+description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
+name = "websockets"
+optional = false
+python-versions = ">=3.6.1"
+version = "8.1"
 
 [[package]]
 category = "dev"
@@ -733,7 +790,7 @@ version = "0.6.0"
 more-itertools = "*"
 
 [metadata]
-content-hash = "5fde303ae22565c559d01217359447278d104078a34e889c795397818fff843d"
+content-hash = "62bc34aedc323f11a40f6c57d33dac9c0886b2cbaf5f500865c7c4a45081bed5"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -744,11 +801,14 @@ backcall = ["38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4", 
 bleach = ["213336e49e102af26d9cde77dd2d0397afabc5a6bf2fed985dc35b5d1e285a16", "3fdf7f77adcf649c9911387df51254b813185e32b2c6619f690b593a617e19fa"]
 certifi = ["017c25db2a153ce562900032d5bc68e9f191e44e9a0f762f373977de9df1fbb3", "25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
+click = ["2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13", "5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"]
 colorama = ["7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff", "e96da0d330793e2cb9485e9ddfd918d456036c7149416295932478192f4436a1"]
 decorator = ["54c38050039232e1db4ad7375cfce6748d7b41c29e95a081c8a6d2c30364a2ce", "5d19b92a3c8f7f101c8dd86afd86b0f061a8ce4540ab8cd401fa2542756bce6d"]
 defusedxml = ["6687150770438374ab581bb7a1b327a847dd9c5749e396102de3fad4e8a3ef93", "f684034d135af4c6cbb949b8a4d2ed61634515257a67299e5f940fbaa34377f5"]
 entrypoints = ["589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19", "c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"]
 fastapi = ["3f626eda9b6edaa17c90c21a4d0d1a97a2a2fcba43a55f8c425b6b37e832c8bb", "44712863ca3899eb812a6869a2efe02d6be6ae972968c76a43d82ec472788f17"]
+h11 = ["33d4bca7be0fa039f4e84d50ab00531047e53d6ee8ffbc83501ea602c169cae1", "4bc6d6a1238b7615b266ada57e0618568066f57dd6fa967d1290ec9309b2f2f1"]
+httptools = ["e00cbd7ba01ff748e494248183abc6e153f49181169d8a3d41bb49132ca01dfc"]
 idna = ["c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407", "ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"]
 importlib-metadata = ["073a852570f92da5f744a3472af1b61e28e9f78ccf0c9117658dc32b15de7b45", "d95141fbfa7ef2ec65cfd945e2af7e5a6ddbd7c8d9a25e66ff3be8e3daf9f60f"]
 ipykernel = ["1a7def9c986f1ee018c1138d16951932d4c9d4da01dad45f9d34e9899565a22f", "b368ad13edb71fa2db367a01e755a925d7f75ed5e09fbd3f06c85e7a8ef108a8"]
@@ -800,7 +860,10 @@ testpath = ["60e0a3261c149755f4399a1fff7d37523179a70fdc3abdf78de9fc2604aeec7e", 
 tornado = ["349884248c36801afa19e342a77cc4458caca694b0eda633f5878e458a44cb2c", "398e0d35e086ba38a0427c3b37f4337327231942e731edaa6e9fd1865bbd6f60", "4e73ef678b1a859f0cb29e1d895526a20ea64b5ffd510a2307b5998c7df24281", "559bce3d31484b665259f50cd94c5c28b961b09315ccd838f284687245f416e5", "abbe53a39734ef4aba061fca54e30c6b4639d3e1f59653f0da37a0003de148c7", "c845db36ba616912074c5b1ee897f8e0124df269468f25e4fe21fe72f6edd7a9", "c9399267c926a4e7c418baa5cbe91c7d1cf362d505a1ef898fde44a07c9dd8a5"]
 traitlets = ["70b4c6a1d9019d7b4f6846832288f86998aa3b9207c6821f3578a6a6a467fe44", "d023ee369ddd2763310e4c3eae1ff649689440d4ae59d7485eb4cfbbe3e359f7"]
 urllib3 = ["a8a318824cc77d1fd4b2bec2ded92646630d7fe8619497b142c84a9e6f5a7293", "f3c5fd51747d450d4dcf6f923c81f78f811aab8205fda64b0aba34a4e48b0745"]
+uvicorn = ["68a13fedeb38260ce663a1d01d367e6809b09b2dedd2a973af5d73291e010e28", "d07129d98440ef69e4fd3aaebf16ab9b96cbcdffd813b9889bf8ec001351f4b8"]
+uvloop = ["08b109f0213af392150e2fe6f81d33261bb5ce968a288eb698aad4f46eb711bd", "123ac9c0c7dd71464f58f1b4ee0bbd81285d96cdda8bc3519281b8973e3a461e", "4315d2ec3ca393dd5bc0b0089d23101276778c304d42faff5dc4579cb6caef09", "4544dcf77d74f3a84f03dd6278174575c44c67d7165d4c42c71db3fdc3860726", "afd5513c0ae414ec71d24f6f123614a80f3d27ca655a4fcf6cabe50994cc1891", "b4f591aa4b3fa7f32fb51e2ee9fea1b495eb75b0b3c8d0ca52514ad675ae63f7", "bcac356d62edd330080aed082e78d4b580ff260a677508718f88016333e2c9c5", "e7514d7a48c063226b7d06617cbb12a14278d4323a065a8d46a7962686ce2e95", "f07909cd9fc08c52d294b1570bba92186181ca01fe3dc9ffba68955273dd7362"]
 wcwidth = ["3df37372226d6e63e1b1e1eda15c594bca98a22d33a23832a90998faa96bc65e", "f4ebe71925af7b40a864553f761ed559b43544f8f71746c2d756c7fe788ade7c"]
 webencodings = ["a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78", "b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"]
+websockets = ["0e4fb4de42701340bd2353bb2eee45314651caa6ccee80dbd5f5d5978888fed5", "1d3f1bf059d04a4e0eb4985a887d49195e15ebabc42364f4eb564b1d065793f5", "20891f0dddade307ffddf593c733a3fdb6b83e6f9eef85908113e628fa5a8308", "295359a2cc78736737dd88c343cd0747546b2174b5e1adc223824bcaf3e164cb", "2db62a9142e88535038a6bcfea70ef9447696ea77891aebb730a333a51ed559a", "3762791ab8b38948f0c4d281c8b2ddfa99b7e510e46bd8dfa942a5fff621068c", "3db87421956f1b0779a7564915875ba774295cc86e81bc671631379371af1170", "3ef56fcc7b1ff90de46ccd5a687bbd13a3180132268c4254fc0fa44ecf4fc422", "4f9f7d28ce1d8f1295717c2c25b732c2bc0645db3215cf757551c392177d7cb8", "5c01fd846263a75bc8a2b9542606927cfad57e7282965d96b93c387622487485", "5c65d2da8c6bce0fca2528f69f44b2f977e06954c8512a952222cea50dad430f", "751a556205d8245ff94aeef23546a1113b1dd4f6e4d102ded66c39b99c2ce6c8", "7ff46d441db78241f4c6c27b3868c9ae71473fe03341340d2dfdbe8d79310acc", "965889d9f0e2a75edd81a07592d0ced54daa5b0785f57dc429c378edbcffe779", "9b248ba3dd8a03b1a10b19efe7d4f7fa41d158fdaa95e2cf65af5a7b95a4f989", "9bef37ee224e104a413f0780e29adb3e514a5b698aabe0d969a6ba426b8435d1", "c1ec8db4fac31850286b7cd3b9c0e1b944204668b8eb721674916d4e28744092", "c8a116feafdb1f84607cb3b14aa1418424ae71fee131642fc568d21423b51824", "ce85b06a10fc65e6143518b96d3dca27b081a740bae261c2fb20375801a9d56d", "d705f8aeecdf3262379644e4b55107a3b55860eb812b673b28d0fbc347a60c55", "e898a0863421650f0bebac8ba40840fc02258ef4714cb7e1fd76b6a6354bda36", "f8a7bff6e8664afc4e6c28b983845c5bc14965030e3fb98789734d416af77c4b"]
 widgetsnbextension = ["079f87d87270bce047512400efd70238820751a11d2d8cb137a5a5bdbaf255c7", "bd314f8ceb488571a5ffea6cc5b9fc6cba0adaf88a9d2386b93a489751938bcd"]
 zipp = ["3718b1cbcd963c7d4c5511a8240812904164b7f381b647143a89d3b98f9bcd8e", "f06903e9f1f43b12d371004b4ac7b06ab39a44adc747266928ae6debfa7b3335"]

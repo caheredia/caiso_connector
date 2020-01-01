@@ -4,6 +4,8 @@
 
 Connect to CAISO API and pull down data 
 
+## Run in debug mode on local machine
+`uvicorn app.main:app --reload `
 
 ## Docker container commands
 ### On local machine

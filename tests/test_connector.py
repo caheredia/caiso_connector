@@ -3,11 +3,12 @@ However, we are assuming `unit` in this context is at the module level.
 We are testing the behavior of code not the implementation."""
 import os
 from src.caiso_connector import (
-    ZIP_DIRECTORY,
     download_csv_file,
     unzip_csv,
     delete_data_files
 )
+
+from src.helpers import ZIP_DIRECTORY
 
 
 def test_connector():

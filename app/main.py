@@ -10,11 +10,6 @@ app = FastAPI()
 conn = sqlite3.connect(DATABASE_LOCATION)
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
-
-
 @app.get("/row-count")
 async def get_row_count():
     count = pd.read_sql_query("""select COUNT(*) from lmp;""", conn).values[0][0]

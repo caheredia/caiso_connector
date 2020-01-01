@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 from datetime import timedelta
 
-from src.helpers import ZIP_DIRECTORY, generate_url
+from src.helpers import ZIP_DIRECTORY, generate_url, DATABASE_LOCATION
 
 from src.caiso_connector import (
     download_csv_file,
@@ -11,10 +11,10 @@ from src.caiso_connector import (
     find_csv_files
 )
 
-DATABASE_FILENAME = "src/lmp.db"
+
 
 # Connect to database
-conn = sqlite3.connect(DATABASE_FILENAME)
+conn = sqlite3.connect(DATABASE_LOCATION)
 
 if __name__ == "__main__":
     # Extract

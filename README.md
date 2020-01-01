@@ -7,9 +7,9 @@ Connect to CAISO API and pull down data
 
 ## Docker container commands
 ### On local machine
-- Build container `docker build -t mybuster .`
-- Run container `docker run -it -p 80:80 mybuster`
-### In the cloud, after ssh
+- Build container `docker build -t caiso-docker .`
+- Run container `docker run -it -p 80:80 caiso-docker`
+### In the cloud or local
 - Find out container number `docker ps`
 - Enter container shell `docker exec -it <mycontainer> bash`
 

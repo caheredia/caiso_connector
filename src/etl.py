@@ -11,8 +11,6 @@ from src.caiso_connector import (
     find_csv_files
 )
 
-
-
 # Connect to database
 conn = sqlite3.connect(DATABASE_LOCATION)
 

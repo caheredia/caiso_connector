@@ -21,7 +21,6 @@ In a real production ETL I would have used an AWS managed database.
 
 # Todo 
 - create slightly sophisticated endpoint 
-- clean up seed etl 
 - determine if cron jobs can be created through Dockerfile
 - create one endpoint with type checked parameters, use the daily average endpoint for this. 
 

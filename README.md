@@ -2,7 +2,11 @@
 ![Build Status](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiRDhSU2M5NW5MVkZpOGwraW9HbnpSSW91d1hTOUpMa3FoYjF2alNmUXZjQlkwTU81UFFPWDJHNG1XTWxkSjlySkE0YWwrUndKc1JWQm5GQVRmdDNRckdjPSIsIml2UGFyYW1ldGVyU3BlYyI6IldwL3NaR3BNeEdXUmdYbjAiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 
-Connect to CAISO API and pull down data 
+This project connects to the CAISO OASIS API and downloads daily Location Marginal Price (LMP) data. 
+The CAISO payload comes in the form of a zip file. The zip file is unpacked through an ETL script. 
+The ETL script parses the CSV for relevant data and persists data in a SQLite database. 
+This database was chosen because of its ease to install and availability on most operating systems. 
+In a real production ETL I would have used an AWS managed database. 
 
 ## Run in debug mode on local machine
 `uvicorn app.main:app --reload `
@@ -16,9 +20,9 @@ Connect to CAISO API and pull down data
 - Enter container shell `docker exec -it <mycontainer> bash`
 
 # Todo 
-- add tests for fastapi 
-- create etls for fastapi  
-
+- create slightly sophisticated endpoint 
+- clean up seed etl 
+- determine if cron jobs can be created through Dockerfile
 
 # References 
 - [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)

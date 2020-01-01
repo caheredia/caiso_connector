@@ -8,7 +8,7 @@ from src.caiso_connector import (
     delete_data_files
 )
 
-from src.helpers import ZIP_DIRECTORY
+from src.helpers import ZIP_DIRECTORY, generate_url
 
 
 def test_connector():
@@ -24,3 +24,8 @@ def test_connector():
 
     delete_data_files(ZIP_DIRECTORY)
     assert len(os.listdir(ZIP_DIRECTORY)) == 1
+
+
+def test_generate_url():
+    test_url = "http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_LMP&startdatetime=2019-12-12-0000&enddatetime=2019-12-13-0000&version=1&market_run_id=DAM&grp_type=ALL_APNODES&resultformat=6"
+    assert generate_url("2019-12-12", "2019-12-13") == test_url

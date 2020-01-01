@@ -1,5 +1,9 @@
 # caiso_connector
+![Build Status](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiRDhSU2M5NW5MVkZpOGwraW9HbnpSSW91d1hTOUpMa3FoYjF2alNmUXZjQlkwTU81UFFPWDJHNG1XTWxkSjlySkE0YWwrUndKc1JWQm5GQVRmdDNRckdjPSIsIml2UGFyYW1ldGVyU3BlYyI6IldwL3NaR3BNeEdXUmdYbjAiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+
+
 Connect to CAISO API and pull down data 
+
 
 ## Docker container maintanence 
 - Find out container number `docker ps`

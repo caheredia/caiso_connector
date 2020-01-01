@@ -23,6 +23,7 @@ In a real production ETL I would have used an AWS managed database.
 - create slightly sophisticated endpoint 
 - clean up seed etl 
 - determine if cron jobs can be created through Dockerfile
+- create one endpoint with type checked parameters, use the daily average endpoint for this. 
 
 # References 
 - [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)

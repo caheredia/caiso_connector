@@ -20,6 +20,7 @@ In a real production ETL I would have used an AWS managed database.
 - Enter container shell `docker exec -it <mycontainer> bash`
 
 # Todo 
+- create database in DOCKER
 - create slightly sophisticated endpoint 
 - determine if cron jobs can be created through Dockerfile
 - create one endpoint with type checked parameters, use the daily average endpoint for this. 

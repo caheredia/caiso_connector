@@ -11,7 +11,7 @@ from src.caiso_connector import (
     find_csv_files
 )
 
-DATABASE_FILENAME = "src/output/lmp.db"
+DATABASE_FILENAME = "src/lmp.db"
 
 # Connect to database
 conn = sqlite3.connect(DATABASE_FILENAME)

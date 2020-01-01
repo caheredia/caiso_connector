@@ -11,6 +11,7 @@ target_url = BASE_URL + query_name + time_range + query_params
 ZIP_DIRECTORY = 'src/temp_data'
 print(target_url)
 
+
 def download_csv_file(data_url: str, directory_path: str):
     """Download csv file.
 
@@ -61,10 +62,12 @@ def find_csv_files(directory_path: str):
 
 def delete_data_files(search_directory: str):
     """Deletes the contents of download directory.
+    If file has .zip for or .csv extension
 
     Parameters
     ----------
     search_directory : str
     """
     for temp_file in os.listdir(search_directory):
-        os.remove(os.path.join(search_directory, temp_file))
+        if temp_file.endswith(".csv") or temp_file.endswith(".zip"):
+            os.remove(os.path.join(search_directory, temp_file))

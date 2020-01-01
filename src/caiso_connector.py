@@ -8,7 +8,7 @@ time_range = "&startdatetime=20190201T00:00-0000&enddatetime=20190206T00:00-0000
 query_params = "&version=1&market_run_id=DAM&grp_type=ALL_APNODES&resultformat=6"
 # build full caiso url
 target_url = BASE_URL + query_name + time_range + query_params
-ZIP_DIRECTORY = 'src'
+ZIP_DIRECTORY = 'src/temp_data'
 print(target_url)
 
 def download_csv_file(data_url: str, directory_path: str):

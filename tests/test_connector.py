@@ -11,13 +11,15 @@ from src.caiso_connector import (
 
 
 def test_connector():
-    """Test the download and deletion of a zip file."""
+    """Test the download and deletion of a zip file.
+    Only the __init__.py should be present.
+    """
     # download files and unzip files
     test_url = "http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_LMP&startdatetime=20190201T00:00-0000&enddatetime=20190202T00:00-0000&version=1&market_run_id=DAM&grp_type=ALL_APNODES&resultformat=6"
     download_csv_file(test_url, ZIP_DIRECTORY)
     unzip_csv(ZIP_DIRECTORY)
 
-    assert len(os.listdir(ZIP_DIRECTORY)) > 0
+    assert len(os.listdir(ZIP_DIRECTORY)) > 1
 
     delete_data_files(ZIP_DIRECTORY)
-    assert len(os.listdir(ZIP_DIRECTORY)) == 0
+    assert len(os.listdir(ZIP_DIRECTORY)) == 1

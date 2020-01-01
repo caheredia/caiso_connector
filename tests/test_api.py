@@ -17,5 +17,11 @@ def test_get_time_ranges():
 
 
 def test_lmp_no_region():
+    response = client.get("/lmp")
+    assert response.status_code == 200
+    assert isinstance(response.json().get('regions'), list)
+
+
+def test_lmp_no_region():
     response = client.get("/lmp/")
     assert response.status_code == 404

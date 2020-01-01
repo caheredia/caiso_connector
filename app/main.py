@@ -23,6 +23,12 @@ async def get_time_ranges():
     return {"oldest timestamp": min_time, "newest timestamp": max_time}
 
 
+@app.get("/lmp")
+async def get_lmp_regions():
+    regions = pd.read_sql_query("""select distinct node from lmp;""", conn).values.tolist()
+    return {"regions": regions}
+
+
 @app.get("/lmp/{region}")
 async def get_lmp_by_region(region: str):
     """Return the LMP for given region.

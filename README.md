@@ -7,6 +7,9 @@ The ETL script parses the CSV for relevant data and persists data in a SQLite da
 This database was chosen because of its ease to install and availability on most operating systems. 
 In a real production ETL I would have used an AWS managed database. 
 
+## Display chart 
+markdown-inline-tag chart.html output.html
+
 ## Run in debug mode on local machine
 ```shell script
 uvicorn app.main:app --reload
@@ -18,6 +21,7 @@ either from your local machine or from inside the docker container
 ```shell script
 python3 -m src.etl
 ```
+
 
 ## Docker container commands
 ### On local machine

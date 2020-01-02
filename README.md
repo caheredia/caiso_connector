@@ -30,6 +30,7 @@ python3 -m src.etl
 # Todo 
 - write up install instructions
 - create time series graph
+- add a run from python and docker section 
 
 # References 
 - [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)

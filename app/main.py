@@ -73,12 +73,3 @@ async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week=DayOfWeek
     mean_lpm = df_afpr[df_afpr['time'].dt.dayofweek == day_of_week_dict.get(day)].mean()[0]
     mean_lpm = round(mean_lpm, 2)
     return {"region": region, "day-of-week": day, "mean_lpm": mean_lpm}
-
-
-@app.get("/model/{model_name}")
-async def get_model(model_name: ModelName):
-    if model_name == ModelName.alexnet:
-        return {"model_name": model_name, "message": "Deep Learning FTW!"}
-    if model_name.value == "lenet":
-        return {"model_name": model_name, "message": "LeCNN all the images"}
-    return {"model_name": model_name, "message": "Have some residuals"}

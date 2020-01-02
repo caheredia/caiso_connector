@@ -22,7 +22,7 @@ def test_lmp_no_region():
     assert isinstance(response.json().get('regions'), list)
 
 
-def test_lmp_no_region():
+def test_lmp_no_region_bad_response():
     response = client.get("/lmp/")
     assert response.status_code == 404
 

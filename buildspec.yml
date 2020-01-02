@@ -11,28 +11,24 @@ phases:
       # login to Elastic container registry
       - eval $(aws ecr get-login --region us-west-2 --no-include-email | sed 's|https://||')
       - REPOSITORY_URI=763096341704.dkr.ecr.us-west-2.amazonaws.com/caheredia/caiso_connector
-      - IMAGE_TAG=$(echo $CODEBUILD_BUILD_ID | awk -F ":" '{print $2}')
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
       - echo Build started on `date`
       - echo Starting build commands
-      - pip3 install --upgrade pip
-      - pip3 install poetry==0.12.17
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing the Docker image...
+      - echo Pushing the Docker images...
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - >-
-        printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_NAME $ECR_REPOSITORY_URI:$BUILD_TAG
-        > imagedefinitions.json
-
-
+      - echo Writing image definitions file...
+      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
-  files:
-    - imagedefinitions.json
+    files: imagedefinitions.json
+
 

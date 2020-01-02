@@ -11,7 +11,7 @@ phases:
       # login to Elastic container registry
       - eval $(aws ecr get-login --region us-west-2 --no-include-email | sed 's|https://||')
       - REPOSITORY_URI=763096341704.dkr.ecr.us-west-2.amazonaws.com/caheredia/caiso_connector
-      - IMAGE_TAG=1.0
+      - IMAGE_TAG=$(echo $CODEBUILD_BUILD_ID | awk -F ":" '{print $2}')
   build:
     commands:
       - echo Build started on `date`
@@ -28,4 +28,8 @@ phases:
       - docker image ls -a
       - docker push $REPOSITORY_URI:$IMAGE_TAG
 
+
+artifacts:
+  files:
+    - imagedefinitions.json
 

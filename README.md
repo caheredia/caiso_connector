@@ -9,7 +9,16 @@ This database was chosen because of its ease to install and availability on most
 In a real production ETL I would have used an AWS managed database. 
 
 ## Run in debug mode on local machine
-`uvicorn app.main:app --reload `
+```shell script
+uvicorn app.main:app --reload
+```
+
+## Seed the datbase
+To initially populate the database you'll need to run the following commnad, 
+either from your local machine or from inside the docker container 
+```shell script
+python3 -m src.etl
+```
 
 ## Docker container commands
 ### On local machine
@@ -20,7 +29,7 @@ In a real production ETL I would have used an AWS managed database.
 - Enter container shell `docker exec -it <mycontainer> bash`
 
 # Todo 
-- create database in DOCKER
+- create instructions on how to seed the database 
 - create slightly sophisticated endpoint 
 - determine if cron jobs can be created through Dockerfile
 - create one endpoint with type checked parameters, use the daily average endpoint for this. 

@@ -25,8 +25,11 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker image ls -a
+      - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - >-
+        printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_NAME $ECR_REPOSITORY_URI:$BUILD_TAG
+        > imagedefinitions.json
 
 
 artifacts:

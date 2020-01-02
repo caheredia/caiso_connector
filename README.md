@@ -1,5 +1,4 @@
 # caiso_connector
-![Build Status](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiRDhSU2M5NW5MVkZpOGwraW9HbnpSSW91d1hTOUpMa3FoYjF2alNmUXZjQlkwTU81UFFPWDJHNG1XTWxkSjlySkE0YWwrUndKc1JWQm5GQVRmdDNRckdjPSIsIml2UGFyYW1ldGVyU3BlYyI6IldwL3NaR3BNeEdXUmdYbjAiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 
 This project connects to the CAISO OASIS API and downloads daily Location Marginal Price (LMP) data. 
@@ -29,9 +28,7 @@ python3 -m src.etl
 - Enter container shell `docker exec -it <mycontainer> bash`
 
 # Todo 
-- create instructions on how to seed the database 
 - create slightly sophisticated endpoint 
-- determine if cron jobs can be created through Dockerfile
 - create one endpoint with type checked parameters, use the daily average endpoint for this. 
 
 # References 

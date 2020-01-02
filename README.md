@@ -12,7 +12,7 @@ In a real production ETL I would have used an AWS managed database.
 uvicorn app.main:app --reload
 ```
 
-## Seed the datbase
+## Seed the database
 To initially populate the database you'll need to run the following commnad, 
 either from your local machine or from inside the docker container 
 ```shell script

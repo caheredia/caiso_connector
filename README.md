@@ -8,7 +8,7 @@ This database was chosen because of its ease to install and availability on most
 In a real production ETL I would have used an AWS managed database. 
 
 ## Display chart 
-markdown-inline-tag chart.html output.html
+[rendered notebook](https://nbviewer.jupyter.org/github/caheredia/caiso_connector/blob/develop/LMP_plot.ipynb)
 
 ## Run in debug mode on local machine
 ```shell script

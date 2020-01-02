@@ -27,7 +27,7 @@ if __name__ == "__main__":
         lmp_columns = ['INTERVALSTARTTIME_GMT', 'NODE', 'LMP_TYPE', 'MW']
         file = find_csv_files(ZIP_DIRECTORY)[0]
         df = (pd.read_csv(file, usecols=lmp_columns)
-              .rename(columns={'INTERVALSTARTTIME_GMT': 'time', 'NODE': 'node', 'MW': 'lmp'}))
+              .rename(columns={'INTERVALSTARTTIME_GMT': 'time', 'NODE': 'node', 'MW': 'mw'}))
         df.time = pd.to_datetime(df.time)
         df = df[df["LMP_TYPE"] == "LMP"].drop(columns=['LMP_TYPE'])
 

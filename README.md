@@ -32,6 +32,7 @@ python3 -m src.etl
 - Enter container shell `docker exec -it <mycontainer> bash`
 
 # Todo 
+- change lmp units back to mw label
 - write up install instructions
 - create time series graph
 - add a run from python and docker section 

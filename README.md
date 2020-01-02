@@ -35,5 +35,6 @@ python3 -m src.etl
 - [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)
 - [OASIS API FAQ](http://www.caiso.com/Documents/OASISFrequentlyAskedQuestions.pdf#search=OASIS%20API)
 - [Interface Specification for OASIS](http://www.caiso.com/Documents/OASIS-InterfaceSpecification_v5_1_8Clean_Independent2019Release.pdf#search=OASIS%20INTERFACE)
+- [New England LMP FAQ](https://iso-ne.com/participate/support/faq/lmp)
 - [Docker image suited for python app](https://pythonspeed.com/articles/base-image-python-docker-images/)
 - [Install SQLite on a specific OS](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)

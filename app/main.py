@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import pandas as pd
 import sqlite3
 from json import loads
+from enum import Enum
 from src.helpers import DATABASE_LOCATION
 
 app = FastAPI()
@@ -40,3 +41,44 @@ async def get_lmp_by_region(region: str):
         """,
         conn).to_json(orient='records')
     return loads(data)
+
+
+class DayOfWeek(str, Enum):
+    monday = "monday"
+    tuesday = "tuesday"
+    wednesday = "wednesday"
+    thursday = "thursday"
+    friday = "friday"
+    saturday = "saturday"
+    sunday = "sunday"
+
+
+@app.get("/lmp/mean/{region}/{day_of_week}")
+async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week=DayOfWeek):
+    """Return the mean LMP for a given region and day of week.
+    For example region = "AFPR_1_TOT_GEN-APND", day-of-week = "monday"
+    """
+    day_of_week_dict = {
+        "monday": 0,
+        "tuesday": 1,
+        "wednesday": 2,
+        "thursday": 3,
+        "friday": 4,
+        "saturday": 5,
+        "sunday": 6
+    }
+    day = day_of_week.value
+    df_afpr = pd.read_sql_query("""select * from lmp WHERE node == "AFPR_1_TOT_GEN-APND";""", conn)
+    df_afpr.time = pd.to_datetime(df_afpr.time)
+    mean_lpm = df_afpr[df_afpr['time'].dt.dayofweek == day_of_week_dict.get(day)].mean()[0]
+    mean_lpm = round(mean_lpm, 2)
+    return {"region": region, "day-of-week": day, "mean_lpm": mean_lpm}
+
+
+@app.get("/model/{model_name}")
+async def get_model(model_name: ModelName):
+    if model_name == ModelName.alexnet:
+        return {"model_name": model_name, "message": "Deep Learning FTW!"}
+    if model_name.value == "lenet":
+        return {"model_name": model_name, "message": "LeCNN all the images"}
+    return {"model_name": model_name, "message": "Have some residuals"}

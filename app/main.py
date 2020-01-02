@@ -60,20 +60,22 @@ class MeanLMP(BaseModel):
     mean_lmp: float = 33.35
 
 
+day_of_week_dict = {
+    "monday": 0,
+    "tuesday": 1,
+    "wednesday": 2,
+    "thursday": 3,
+    "friday": 4,
+    "saturday": 5,
+    "sunday": 6
+}
+
+
 @app.get("/lmp/mean/{region}/{day_of_week}", response_model=MeanLMP)
 async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week: DayOfWeek):
     """Return the mean LMP for a given region and day of week.
     For example region = "AFPR_1_TOT_GEN-APND", day-of-week = "monday"
     """
-    day_of_week_dict = {
-        "monday": 0,
-        "tuesday": 1,
-        "wednesday": 2,
-        "thursday": 3,
-        "friday": 4,
-        "saturday": 5,
-        "sunday": 6
-    }
 
     df_afpr = pd.read_sql_query("""select * from lmp WHERE node == "AFPR_1_TOT_GEN-APND";""", conn)
     df_afpr.time = pd.to_datetime(df_afpr.time)

@@ -40,6 +40,21 @@ python3 -m src.etl
 ```shell script
 python3 -m pytest tests/
 ```
+which yields the following upon successful run 
+```shell script
+(caiso) ➜  caiso_connector git:(develop) python3 -m pytest tests/
+========================================================== test session starts ===========================================================
+platform darwin -- Python 3.7.3, pytest-5.3.2, py-1.8.1, pluggy-0.13.1
+rootdir: /Users/cristian/Documents/2019/caiso_connector
+collected 7 items                                                                                                                        
+
+tests/test_api.py .....                                                                                                            [ 71%]
+tests/test_connector.py ..                                                                                                         [100%]
+
+=========================================================== 7 passed in 23.89s ===========================================================
+(caiso) ➜  caiso_connector git:(develop) 
+
+```
 
 # References 
 - [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)

@@ -3,6 +3,7 @@ import pandas as pd
 import sqlite3
 from json import loads
 from enum import Enum
+from pydantic import BaseModel
 from src.helpers import DATABASE_LOCATION
 
 app = FastAPI()
@@ -53,8 +54,14 @@ class DayOfWeek(str, Enum):
     sunday = "sunday"
 
 
-@app.get("/lmp/mean/{region}/{day_of_week}")
-async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week=DayOfWeek):
+class MeanLMP(BaseModel):
+    region: str = "AFPR_1_TOT_GEN-APND"
+    day: str = "sunday"
+    mean_lmp: float = 33.35
+
+
+@app.get("/lmp/mean/{region}/{day_of_week}", response_model=MeanLMP)
+async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week: DayOfWeek):
     """Return the mean LMP for a given region and day of week.
     For example region = "AFPR_1_TOT_GEN-APND", day-of-week = "monday"
     """
@@ -67,9 +74,9 @@ async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week=DayOfWeek
         "saturday": 5,
         "sunday": 6
     }
-    day = day_of_week.value
+
     df_afpr = pd.read_sql_query("""select * from lmp WHERE node == "AFPR_1_TOT_GEN-APND";""", conn)
     df_afpr.time = pd.to_datetime(df_afpr.time)
-    mean_lpm = df_afpr[df_afpr['time'].dt.dayofweek == day_of_week_dict.get(day)].mean()[0]
-    mean_lpm = round(mean_lpm, 2)
-    return {"region": region, "day-of-week": day, "mean_lpm": mean_lpm}
+    mean_lmp = df_afpr[df_afpr['time'].dt.dayofweek == day_of_week_dict.get(day_of_week)].mean()[0]
+    mean_lmp = round(mean_lmp, 2)
+    return {"region": region, "day": day_of_week, "mean_lmp": mean_lmp}

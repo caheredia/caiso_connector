@@ -28,6 +28,8 @@ python3 -m src.etl
 - Enter container shell `docker exec -it <mycontainer> bash`
 
 # Todo 
+- add examples to endpoints, where needed 
+- add tests for new endoints 
 - change units in database from mw to lmp
 - create slightly sophisticated endpoint 
 - create one endpoint with type checked parameters, use the daily average endpoint for this. 

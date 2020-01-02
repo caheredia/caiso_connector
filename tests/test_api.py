@@ -29,4 +29,4 @@ def test_lmp_no_region_bad_response():
 
 def test_lmp_mean():
     response = client.get("/lmp/mean/{region}/{day_of_week}")
-    assert response.status_code == 404
+    assert response.status_code == 422

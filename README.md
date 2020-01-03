@@ -1,11 +1,7 @@
 # caiso_connector
+This project connects to the CAISO OASIS API and downloads daily. Location Marginal Price (LMP) data. The CAISO payload comes in the form of a zip file. The zip file is unpacked through an ETL script. The ETL script parses the CSV for relevant data and persists data in a SQLite database. 
 
-
-This project connects to the CAISO OASIS API and downloads daily Location Marginal Price (LMP) data. 
-The CAISO payload comes in the form of a zip file. The zip file is unpacked through an ETL script. 
-The ETL script parses the CSV for relevant data and persists data in a SQLite database. 
-This database was chosen because of its ease to install and availability on most operating systems. 
-In a real production ETL I would have used an AWS managed database. 
+This database was chosen because of its ease of install and availability on most operating systems. In a real production ETL, I would have used an AWS managed database. 
 
 ## Display chart 
 [rendered notebook](https://nbviewer.jupyter.org/github/caheredia/caiso_connector/blob/develop/LMP_plot.ipynb)
@@ -31,10 +27,6 @@ python3 -m src.etl
 - Find out container number `docker ps`
 - Enter container shell `docker exec -it <mycontainer> bash`
 
-# Todo 
-- write up install instructions
-- create time series graph
-- add a run from python and docker section 
 
 # Run tests
 ```shell script

@@ -1,10 +1,10 @@
 # CAISO Connector
-This project connects to the CAISO OASIS API and downloads daily. Location Marginal Price (LMP) data. The CAISO payload comes in the form of a zip file. The zip file is unpacked through an ETL script. The ETL script parses the CSV for relevant data and persists data in an SQLite database. 
+This project connects to the CAISO OASIS API and downloads daily Location Marginal Price (LMP) data. The CAISO payload comes in the form of a zip file. The zip file is unpacked through an ETL script. The ETL script parses the CSV for relevant data and persists data in a SQLite database. 
 
 This database was chosen because of its ease of install and availability on most operating systems. In a real production ETL, I would have used an AWS managed database. 
 ***
 ## Install instructions 
-Below are three methods to install and run code.
+Below are two methods to install and run this code.
 
 ### Run project from local machine
 - prerequisites: 
@@ -25,9 +25,9 @@ Below are three methods to install and run code.
     ```shell script
     poetry install
     ```
-4. Install SQLite database
+4. Install SQLite
 
-    Depending on your OS the instructions defer. Mac OSX comes with SQLite pre-installed. Otherwise, [here](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm) are instructions for installing the database. 
+   Mac OSX comes with SQLite pre-installed. Otherwise, [here](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm) are instructions for installing the database on other Operating Systems. 
 5. Populate the database
 
     To initially populate the database you'll need to run the following command: 

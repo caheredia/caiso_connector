@@ -65,7 +65,7 @@ Below are two methods to install and run this code.
 # Outputs 
 - This code generates a SQLite database located at `src/lmp.db`
 - Locally, a REST API is located at `http://127.0.0.1:8000/docs`
-- The code generates an interactive LMP chart `LMP_plot.html`. The chart can be rendered from the notebook `LMP_plot.ipynb` notebook, which is also rendered online here [rendered notebook](https://nbviewer.jupyter.org/github/caheredia/caiso_connector/blob/develop/LMP_plot.ipynb)
+- The code generates an interactive LMP chart `LMP_plot.html`. The chart can be rendered from the notebook `LMP_plot.ipynb` notebook, which is also rendered online here [rendered notebook](https://nbviewer.jupyter.org/github/caheredia/caiso_connector/blob/master/LMP_plot.ipynb)
 
 ***
 

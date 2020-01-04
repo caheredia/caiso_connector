@@ -18,6 +18,7 @@ jupyter = "^1.0"
 altair = "^4.0"
 vega_datasets = "^0.8.0"
 vega = "=1.3"
+sphinx = "^2.3"
 
 [build-system]
 requires = ["poetry>=0.12"]

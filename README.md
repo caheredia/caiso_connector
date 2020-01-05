@@ -3,7 +3,7 @@ This project connects to the CAISO OASIS API and downloads daily Location Margin
 
 This database was chosen because of its ease of install and availability on most operating systems. In a real production ETL, I would have used an AWS managed database. 
 
-Code documentation [here](https://caheredia.github.io/caiso_connector/docs/index.html)
+Code documentation [here](https://caheredia.github.io/caiso_connector/_build/html/index.html)
 ***
 ## Install instructions 
 Below are two methods to install and run this code.

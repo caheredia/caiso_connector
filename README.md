@@ -2,6 +2,8 @@
 This project connects to the CAISO OASIS API and downloads daily Location Marginal Price (LMP) data. The CAISO payload comes in the form of a zip file. The zip file is unpacked through an ETL script. The ETL script parses the CSV for relevant data and persists data in a SQLite database. 
 
 This database was chosen because of its ease of install and availability on most operating systems. In a real production ETL, I would have used an AWS managed database. 
+
+Code documentation [here](https://caheredia.github.io/caiso_connector/docs/index.html)
 ***
 ## Install instructions 
 Below are two methods to install and run this code.

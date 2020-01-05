@@ -6,6 +6,8 @@
 Welcome to CAISO Connector's documentation!
 ===========================================
 
+Code on `github <https://github.com/caheredia/caiso_connector/>`_
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

@@ -5,6 +5,7 @@ from crontab import CronTab
 
 current_directory = getcwd()
 relative_file_location = "src.cron_jobs.write_date"
+
 # Create cron user, assumes current user
 cron_user = CronTab(user=True)
 
@@ -13,12 +14,10 @@ job = cron_user.new(
     command=f"cd {current_directory} && python3 -m {relative_file_location}",
     comment='Initial Cron job')
 
-
 # Schedule job
 job.minute.every(1)
 
 # write jobs
-#cron_user.remove_all()
 cron_user.write()
 
 for job in cron_user:

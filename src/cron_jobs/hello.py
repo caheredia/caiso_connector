@@ -1,1 +1,1 @@
-print("Hello Kountable, I'm from Crontab")
+print("Hello I'm from Crontab")

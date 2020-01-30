@@ -3,7 +3,7 @@ COPY . .
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install gcc
-RUN apt-get install cron
+RUN apt-get -y install cron
 RUN apt-get install -y sqlite3 libsqlite3-dev
 RUN pip install --upgrade pip
 RUN pip install poetry==0.12.17

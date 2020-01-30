@@ -9,7 +9,6 @@ relative_file_location = "src.cron_jobs.write_date"
 
 # Create cron user, assumes current user
 cron_user = CronTab(user=True)
-print('Cron User: ', cron_user)
 
 # Create cron jobs
 out = subprocess.Popen(["which", "python3"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -25,6 +24,7 @@ job.minute.every(1)
 # write jobs
 cron_user.write()
 
+# print jobs
 for job in cron_user:
     print(job)
 

@@ -1,6 +1,7 @@
 """This module executes an ETL for Calculated tables.
 Eventually this should get promoted to a Jenkins or Apache Airflow job."""
-from os import getcwd, system
+from os import getcwd
+import subprocess
 from crontab import CronTab
 
 current_directory = getcwd()
@@ -11,7 +12,9 @@ cron_user = CronTab(user=True)
 print('Cron User: ', cron_user)
 
 # Create cron jobs
-python_path = system("which python3")
+out = subprocess.Popen(["which", "python3"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+python_path = out.communicate()[0].decode().strip()
+
 job = cron_user.new(
     command=f"cd {current_directory} && {python_path} -m {relative_file_location}",
     comment='Initial Cron job')

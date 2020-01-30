@@ -11,6 +11,7 @@ RUN apt-get -y update \
     && poetry config settings.virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 EXPOSE 80
-CMD cron
-CMD python3 -m src.cron_jobs.run_cron
-CMD uvicorn --host 0.0.0.0 --port 80 app.main:app
+CMD cron \
+    && echo $(/etc/init.d/cron status) \
+    && python3 -m src.cron_jobs.run_cron \
+    && uvicorn --host 0.0.0.0 --port 80 app.main:app

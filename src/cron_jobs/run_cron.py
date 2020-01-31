@@ -24,4 +24,3 @@ print(date_cron)
 
 
 
-# python3 ~/Documents/2019/database-api/src/accumulo/views/hello.py >> ~/Documents/2019/database-api/src/accumulo/views/a.txt 2>&1

@@ -11,7 +11,11 @@ RUN apt-get -y update \
     && poetry config settings.virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 EXPOSE 80
+
 CMD cron \
+    # add cron job
+    && python3 -m src.cron_jobs.run_cron >> /etc/cron.d/date_cron \
+    # apply cron job
+    && crontab /etc/cron.d/date_cron \
     && echo $(/etc/init.d/cron status) \
-    && python3 -m src.cron_jobs.run_cron \
     && uvicorn --host 0.0.0.0 --port 80 app.main:app

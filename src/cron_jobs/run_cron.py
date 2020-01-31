@@ -10,10 +10,11 @@ relative_file_location = "src.cron_jobs.write_date"
 # Create cron user, assumes current user
 cron_user = CronTab(user=True)
 
-# Create cron jobs
+# Get system python path, depends on OS
 out = subprocess.Popen(["which", "python3"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 python_path = out.communicate()[0].decode().strip()
 
+# Create cron jobs
 job = cron_user.new(
     command=f"cd {current_directory} && {python_path} -m {relative_file_location}",
     comment='Initial Cron job')

@@ -99,3 +99,5 @@ tests/test_connector.py ..                                                      
 - [Docker image suited for python app](https://pythonspeed.com/articles/base-image-python-docker-images/)
 - [Install SQLite on a specific OS](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
 
+# Todo 
+- add .env file an load constants in helper module 

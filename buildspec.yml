@@ -13,7 +13,7 @@ phases:
       - REPOSITORY_URI=763096341704.dkr.ecr.us-west-2.amazonaws.com/caheredia/caiso_connector
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
-      # - aws s3 cp s3://my_S3_bucket_here/.env .
+      # - aws s3 cp s3://my_S3_bucket/.env .
   build:
     commands:
       - echo Build started on `date`

@@ -1,5 +1,3 @@
-
-
 def generate_url(start_time: str, end_time: str):
     """Generates a CAISO OASIS url based on start and time.
 

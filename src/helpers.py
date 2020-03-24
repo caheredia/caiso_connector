@@ -1,5 +1,3 @@
-DATABASE_LOCATION = "src/lmp.db"
-ZIP_DIRECTORY = 'src/temp_data'
 
 
 def generate_url(start_time: str, end_time: str):

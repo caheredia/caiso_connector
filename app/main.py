@@ -4,7 +4,7 @@ import sqlite3
 from json import loads
 from enum import Enum
 from pydantic import BaseModel
-from src.helpers import DATABASE_LOCATION
+from src.constants import DATABASE_LOCATION
 
 app = FastAPI()
 

@@ -1,17 +1,17 @@
 import asyncio
 from datetime import timedelta
-
 import aiofiles
 from aiohttp import ClientSession
 import pandas as pd
-from src.constants import IB
+from src.constants import IBM_API_KEY, SAVE_FOLDER
 
 # generate links
 caiso_urls = {}
-for date in pd.date_range("2019-01-01", "2019-01-02"):
+for date in pd.date_range("2019-01-01", "2019-01-01"):
     start_time = date.isoformat()[:-3].replace('-', '')
     end_time = (date + timedelta(days=1)).isoformat()[:-3].replace('-', '')
-    caiso_urls[start_time] = "https://api.weather.com//v3/wx/hod/conditions/historical/point?format=json&units=s&pointType=nearest&geocode=33.0917%2C-95.0417&startDateTime=201601010000&endDateTime=201601072359&apiKey=PASSWORD+HERE"
+    caiso_urls[
+        start_time] = f"http://api.weather.com/v3/wx/hod/conditions/historical/point?format=json&units=s&pointType=nearest&geocode=33.0917%2C-95.0417&startDateTime=201601010000&endDateTime=201601072359&apiKey={IBM_API_KEY}"
 
 
 async def download(url: str, filename: str, session: ClientSession) -> None:
@@ -21,7 +21,7 @@ async def download(url: str, filename: str, session: ClientSession) -> None:
     resp.raise_for_status()
     content = await resp.content.read()
 
-    async with aiofiles.open("src/temp_data/" + filename + ".zip", 'wb') as f:
+    async with aiofiles.open(SAVE_FOLDER + filename + ".json", 'wb') as f:
         await f.write(content)
         print(f"finished {filename}")
 
@@ -38,4 +38,4 @@ if __name__ == '__main__':
     for date in caiso_urls:
         print(date, caiso_urls.get(date))
 
-    #asyncio.run(main())
+    asyncio.run(main())

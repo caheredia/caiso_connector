@@ -77,8 +77,8 @@ async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week: DayOfWee
     For example region = "AFPR_1_TOT_GEN-APND", day-of-week = "monday"
     """
 
-    df_afpr = pd.read_sql_query(f"""select * from lmp WHERE node == {region};""", conn)
-    df_afpr.time = pd.to_datetime(df_afpr.time)
-    mean_lmp = df_afpr[df_afpr['time'].dt.dayofweek == day_of_week_dict.get(day_of_week)].mean()[0]
+    data = pd.read_sql_query(f"""select * from lmp WHERE node == '{region}';""", conn)
+    data.time = pd.to_datetime(data.time)
+    mean_lmp = data[data['time'].dt.dayofweek == day_of_week_dict.get(day_of_week)].mean()[0]
     mean_lmp = round(mean_lmp, 2)
     return {"region": region, "day": day_of_week, "mean_lmp": mean_lmp}

@@ -1,5 +1,7 @@
 from starlette.testclient import TestClient
 from app.main import app
+from hypothesis import given
+import hypothesis.strategies as strategy
 
 client = TestClient(app)
 
@@ -30,3 +32,11 @@ def test_lmp_no_region_bad_response():
 def test_lmp_mean():
     response = client.get("/lmp/mean/{region}/{day_of_week}")
     assert response.status_code == 422
+
+def add_int(x,y):
+    return x + abs(y)
+
+@given(strategy.integers(), strategy.integers())
+def test_add(x, y ):
+    assert add_int(x, y) == x + y
+

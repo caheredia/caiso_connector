@@ -8,7 +8,7 @@ from src.constants import IBM_API_KEY, SAVE_FOLDER
 
 # generate links
 caiso_urls = {}
-for date in pd.date_range("2019-01-01", "2019-01-03"):
+for date in pd.date_range("2019-01-01", "2019-02-01"):
     start_time = date.isoformat()[:-3].replace('-', '').split('T')[0]
     end_time = (date + timedelta(days=1)).isoformat()[:-3].replace('-', '').split('T')[0]
     caiso_urls[start_time] = f"http://api.weather.com/v3/wx/hod/conditions/historical/point?format=json&units=s&pointType=nearest&geocode=33.0917%2C-95.0417&startDateTime={start_time}0000&endDateTime={end_time}0000&apiKey={IBM_API_KEY}"

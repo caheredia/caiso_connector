@@ -8,7 +8,7 @@ from src.caiso_connector import (
     delete_data_files
 )
 
-from src.helpers import  generate_url
+from src.helpers import generate_url
 from src.constants import ZIP_DIRECTORY
 
 

@@ -27,7 +27,9 @@ async def get_time_ranges():
 
 @app.get("/lmp")
 async def get_lmp_regions():
-    regions = pd.read_sql_query("""select distinct node from lmp;""", conn).values.tolist()
+    regions = pd.read_sql_query(
+        """select distinct node from lmp;""", conn
+    ).values.tolist()
     return {"regions": regions}
 
 
@@ -40,7 +42,8 @@ async def get_lmp_by_region(region: str):
         f"""select * from lmp
         WHERE node == '{region}';
         """,
-        conn).to_json(orient='records')
+        conn,
+    ).to_json(orient="records")
     return loads(data)
 
 
@@ -67,7 +70,7 @@ day_of_week_dict = {
     "thursday": 3,
     "friday": 4,
     "saturday": 5,
-    "sunday": 6
+    "sunday": 6,
 }
 
 
@@ -79,6 +82,8 @@ async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week: DayOfWee
 
     df_afpr = pd.read_sql_query(f"""select * from lmp WHERE node == {region};""", conn)
     df_afpr.time = pd.to_datetime(df_afpr.time)
-    mean_lmp = df_afpr[df_afpr['time'].dt.dayofweek == day_of_week_dict.get(day_of_week)].mean()[0]
+    mean_lmp = df_afpr[
+        df_afpr["time"].dt.dayofweek == day_of_week_dict.get(day_of_week)
+    ].mean()[0]
     mean_lmp = round(mean_lmp, 2)
     return {"region": region, "day": day_of_week, "mean_lmp": mean_lmp}

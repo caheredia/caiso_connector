@@ -8,29 +8,30 @@ from src.caiso_connector import (
     download_csv_file,
     unzip_csv,
     delete_data_files,
-    find_csv_files
+    find_csv_files,
 )
 
-df = pd.DataFrame()
-# Connect to database
-conn = sqlite3.connect(DATABASE_LOCATION)
 
 if __name__ == "__main__":
+    # Connect to database
+    conn = sqlite3.connect(DATABASE_LOCATION)
+
     # Extract
     for date in pd.date_range("2019-10-01", "2019-11-29"):
-        start_time = date.isoformat()[:-3].replace('-', '')
-        end_time = (date + timedelta(days=1)).isoformat()[:-3].replace('-', '')
+        start_time = date.isoformat()[:-3].replace("-", "")
+        end_time = (date + timedelta(days=1)).isoformat()[:-3].replace("-", "")
         target = generate_url(start_time, end_time)
         download_csv_file(target, ZIP_DIRECTORY)
         unzip_csv(ZIP_DIRECTORY)
 
         # Transform
-        lmp_columns = ['INTERVALSTARTTIME_GMT', 'NODE', 'LMP_TYPE', 'MW']
+        lmp_columns = ["INTERVALSTARTTIME_GMT", "NODE", "LMP_TYPE", "MW"]
         file = find_csv_files(ZIP_DIRECTORY)[0]
-        df = (pd.read_csv(file, usecols=lmp_columns)
-              .rename(columns={'INTERVALSTARTTIME_GMT': 'time', 'NODE': 'node', 'MW': 'mw'}))
+        df = pd.read_csv(file, usecols=lmp_columns).rename(
+            columns={"INTERVALSTARTTIME_GMT": "time", "NODE": "node", "MW": "mw"}
+        )
         df.time = pd.to_datetime(df.time)
-        df = df[df["LMP_TYPE"] == "LMP"].drop(columns=['LMP_TYPE'])
+        df = df[df["LMP_TYPE"] == "LMP"].drop(columns=["LMP_TYPE"])
 
         # Load
         print(f"adding {start_time}")

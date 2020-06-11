@@ -49,15 +49,15 @@ Below are two methods to install and run this code.
 ### Run project from Docker container
 1. In a new directory, download code repository 
     ```shell script
-    git clone git@github.com:caheredia/caiso_connector.git
+    docker-compose up
     ```
-2. Build container `docker build -t caiso-docker .`
 
-3.  Run container `docker run -it -p 80:80 caiso-docker`
+2.  The previous command will build and start the necessary containers. 
 
     navigate to `http://127.0.0.1:8000/docs` to interact with REST API
 
-4. Populate database
+3. Populate database
+	# TODO update this point and overall flow of instructions 
     From inside the docker container run step 5 from above. 
     
 **Useful docker commands, in the cloud or local**

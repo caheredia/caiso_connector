@@ -25,4 +25,5 @@ pynvim = "^0.4.1"
 coverage = "^5.1"
 
 [build-system]
+requires = ["poetry>=1.0"]
 build-backend = "poetry.masonry.api"

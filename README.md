@@ -93,6 +93,9 @@ tests/test_connector.py ..                                                      
 
 ```
 
+# TODO 
+- add python command to run tests: bootstrap will invoke docker-compose 
+
 # References 
 - [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)
 - [OASIS API FAQ](http://www.caiso.com/Documents/OASISFrequentlyAskedQuestions.pdf#search=OASIS%20API)

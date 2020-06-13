@@ -1,8 +1,8 @@
 version: "3"
 services:
-  web:
+  rest_api:
     build: .
-    container_name: "caiso-connector"
+    container_name: "caiso_connector"
     ports:
       - "80:80"
   demo:

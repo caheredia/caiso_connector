@@ -95,6 +95,8 @@ tests/test_connector.py ..                                                      
 
 # TODO 
 - add python command to run tests: bootstrap will invoke docker-compose 
+- Turn off tests that hit the network until mocking is complete. 
+- separate integration test, tests shouldn't hit the network: mock
 
 # References 
 - [CAISO OASIS](http://oasis.caiso.com/mrioasis/logon.do?reason=application.baseAction.noSession#)

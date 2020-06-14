@@ -1,0 +1,4 @@
+# black compatible flake8 settings per: https://github.com/psf/black#line-length
+[flake8]
+max-line-length = 88
+extend-ignore = E203,E501,E266,E731

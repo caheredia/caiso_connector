@@ -11,7 +11,7 @@ from src.caiso_connector import (
 from src.helpers import ZIP_DIRECTORY, generate_url
 
 
-def test_connector():
+def _test_connector():
     """Test the download and deletion of a zip file.
     Only the __init__.py should be present.
     """

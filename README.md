@@ -1,7 +1,5 @@
 # CAISO Connector
-[![Maintainability](https://api.codeclimate.com/v1/badges/4e78f9257cc5a90ef83e/maintainability)](https://codeclimate.com/github/caheredia/caiso_connector/maintainability)
-
-![Build](https://github.com/caheredia/caiso_connector/workflows/Python%20application/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4e78f9257cc5a90ef83e/maintainability)](https://codeclimate.com/github/caheredia/caiso_connector/maintainability) ![Build](https://github.com/caheredia/caiso_connector/workflows/Python%20application/badge.svg) ![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 This project connects to the CAISO OASIS API and downloads daily Location Marginal Price (LMP) data. The CAISO payload comes in the form of a zip file. The zip file is unpacked through an ETL script. The ETL script parses the CSV for relevant data and persists data in a SQLite database. 
 

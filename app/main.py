@@ -4,12 +4,18 @@ import sqlite3
 from json import loads
 from enum import Enum
 from pydantic import BaseModel
-from src.helpers import DATABASE_LOCATION
+from src.helpers import get_db_location
 
 app = FastAPI()
 
-# Connect to database
-conn = sqlite3.connect(DATABASE_LOCATION)
+
+conn = sqlite3.connect(get_db_location())
+
+
+@app.get("/info")
+async def get_info():
+    """Return settings info set db with it."""
+    return {"db": get_db_location()}
 
 
 @app.get("/row-count")

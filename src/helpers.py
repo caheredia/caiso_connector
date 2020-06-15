@@ -1,4 +1,5 @@
 DATABASE_LOCATION = "src/lmp.db"
+TEST_DATABASE_LOCATION = "tests/test_lmp.db"
 ZIP_DIRECTORY = "src/temp_data"
 
 

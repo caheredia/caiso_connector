@@ -1,15 +1,12 @@
+import os
 from starlette.testclient import TestClient
-from app import config
-from app import main
+from src.helpers import TEST_DATABASE_LOCATION
 
-client = TestClient(main.app)
-
-
-def get_settings_override():
-    return config.Settings(database="tests/test_lmp.db")
+os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION
+from app.main import app  # noqa
 
 
-main.app.dependency_overrides[main.get_conn] = get_settings_override
+client = TestClient(app)
 
 
 def test_get_row_count():

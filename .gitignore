@@ -8,7 +8,7 @@ __pycache__/
 *.so
 
 # database
-*.db
+src/lmp.db
 
 # Distribution / packaging
 .Python

@@ -1,9 +1,11 @@
-from fastapi import FastAPI
-import pandas as pd
 import sqlite3
-from json import loads
 from enum import Enum
+from json import loads
+
+import pandas as pd
+from fastapi import FastAPI
 from pydantic import BaseModel
+
 from src.helpers import get_db_location
 
 app = FastAPI()

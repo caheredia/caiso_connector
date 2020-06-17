@@ -1,16 +1,15 @@
-import pandas as pd
 import sqlite3
 from datetime import timedelta
 
-from src.helpers import ZIP_DIRECTORY, generate_url, DATABASE_LOCATION
+import pandas as pd
 
 from src.caiso_connector import (
-    download_csv_file,
-    unzip_csv,
     delete_data_files,
+    download_csv_file,
     find_csv_files,
+    unzip_csv,
 )
-
+from src.helpers import DATABASE_LOCATION, ZIP_DIRECTORY, generate_url
 
 if __name__ == "__main__":
     # Connect to database

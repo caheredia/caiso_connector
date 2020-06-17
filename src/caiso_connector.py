@@ -1,6 +1,6 @@
+import os
 import zipfile
 from urllib.request import urlretrieve
-import os
 
 
 def download_csv_file(data_url: str, directory_path: str):
@@ -13,7 +13,7 @@ def download_csv_file(data_url: str, directory_path: str):
     directory_path : str
         location of saved zipped file
     """
-    urlretrieve(data_url, directory_path + '/temp.zip')
+    urlretrieve(data_url, directory_path + "/temp.zip")
 
 
 def unzip_csv(directory_path: str):
@@ -28,7 +28,7 @@ def unzip_csv(directory_path: str):
     for zip_file in os.listdir(directory_path):
         if zip_file.endswith(".zip"):
             zip_path = os.path.join(directory_path, zip_file)
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            with zipfile.ZipFile(zip_path, "r") as zip_ref:
                 zip_ref.extractall(directory_path)
 
 

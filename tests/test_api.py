@@ -2,9 +2,8 @@ import os
 from starlette.testclient import TestClient
 from src.helpers import TEST_DATABASE_LOCATION
 
-os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION
-from app.main import app  # noqa
-
+os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION  # isort:skip
+from app.main import app  # isort:skip # noqa
 
 client = TestClient(app)
 

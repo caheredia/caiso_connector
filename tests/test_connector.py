@@ -1,18 +1,29 @@
-"""The intentions of this test suite is to unit test the project code.
-However, we are assuming `unit` in this context is at the module level.
-We are testing the behavior of code not the implementation."""
 import os
+from urllib import request
+
 
 from src.caiso_connector import delete_data_files, download_csv_file, unzip_csv
 from src.helpers import ZIP_DIRECTORY, generate_url
 
 
-def _test_connector():
+# mock urlretrieve(data_url, directory_path + "/temp.zip")
+class MockRetrieve:
+    with open(ZIP_DIRECTORY + "/mock.csv", "w+") as file:
+        file.write("")
+
+
+def test_connector(monkeypatch):
     """Test the download and deletion of a zip file.
     Only the __init__.py should be present.
     """
     # download files and unzip files
     test_url = "http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_LMP&startdatetime=20190201T00:00-0000&enddatetime=20190202T00:00-0000&version=1&market_run_id=DAM&grp_type=ALL_APNODES&resultformat=6"
+
+    def mock_retrieve(*args, **kwargs):
+        return MockRetrieve()
+
+    # apply the monkeypatch for requests.get to mock_get
+    monkeypatch.setattr(request, "urlretrieve", mock_retrieve)
     download_csv_file(test_url, ZIP_DIRECTORY)
     unzip_csv(ZIP_DIRECTORY)
 

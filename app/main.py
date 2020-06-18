@@ -14,12 +14,6 @@ app = FastAPI()
 conn = sqlite3.connect(get_db_location())
 
 
-@app.get("/info")
-async def get_info():
-    """Return settings info set db with it."""
-    return {"db": get_db_location()}
-
-
 @app.get("/row-count")
 async def get_row_count():
     count = pd.read_sql_query("""select COUNT(*) from lmp;""", conn).values[0][0]

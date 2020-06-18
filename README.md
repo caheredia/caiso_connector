@@ -10,42 +10,6 @@ Code documentation [here](https://caheredia.github.io/caiso_connector/_build/htm
 ## Install instructions 
 Below are two methods to install and run this code.
 
-### Run project from local machine
-- prerequisites: 
-    - Python >= 3.7
-    - a new python virtual environment
-1. Install [Poetry](https://python-poetry.org/)——a python dependency manager.
-    ```shell script
-    pip install poetry==0.12.17
-    ```
-2. Download code repository 
-    ```shell script
-    git clone git@github.com:caheredia/caiso_connector.git
-    ```
-3. Install dependencies with poetry, first configure poetry to not install a new virtual environment 
-    ```shell script
-    poetry config settings.virtualenvs.create false
-    ```
-    ```shell script
-    poetry install
-    ```
-4. Install SQLite
-
-   Mac OSX comes with SQLite pre-installed. Otherwise, [here](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm) are instructions for installing the database on other Operating Systems. 
-5. Populate the database
-
-    To initially populate the database you'll need to run the following command: 
-    ```shell script
-    python3 -m src.etl
-    ```
-6. Start the [FastAPI](https://fastapi.tiangolo.com/) REST API server 
-    The `--reload` flag runs the server in debug mode 
-    ```shell script
-    uvicorn app.main:app --reload
-    ```
-   
-   navigate to `http://127.0.0.1:8000/docs` to interact with REST API
-
 ### Run project from Docker container
 1. In a new directory, download code repository 
     ```shell script
@@ -54,7 +18,7 @@ Below are two methods to install and run this code.
 
 2.  The previous command will build and start the necessary containers. 
 
-    navigate to `http://127.0.0.1:8000/docs` to interact with REST API
+    navigate to `http://0.0.0.0:80/docs` to interact with REST API
 
 3. Populate database
 	# TODO update this point and overall flow of instructions 

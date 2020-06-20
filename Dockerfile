@@ -1,5 +1,5 @@
-FROM python:3.7-slim-buster
-COPY . .
+FROM python:3.8.3-slim-buster
+COPY ["pyproject.toml", "poetry.lock" , "./"]
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install gcc

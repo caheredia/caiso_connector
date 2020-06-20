@@ -1,4 +1,4 @@
-FROM python:3.7-slim-buster
+FROM python:3.8.3-slim-buster
 COPY . .
 RUN apt-get -y update
 RUN apt-get -y upgrade

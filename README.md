@@ -34,11 +34,11 @@ navigate to `http://0.0.0.0:80/docs` to interact with REST API
 ***
 
 # Run tests
-```shell script
+```shell
 docker-compose exec web python -m pytest tests
 ```
 which yields the following upon successful run 
-```shell script
+```shell
  ➜  caiso_connector git:(master) docker-compose exec web python -m pytest tests
 ============================ test session starts =============================
 platform linux -- Python 3.7.7, pytest-5.3.2, py-1.8.1, pluggy-0.13.1

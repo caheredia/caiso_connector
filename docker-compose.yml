@@ -5,9 +5,11 @@ services:
     container_name: "caiso-connector"
     ports:
       - "80:80"
+    volumes:
+      - .:/code
+    working_dir: /code
   demo:
     image: python:3.8.3-slim
     container_name: "demo_container"
     command: /bin/bash -c "tail -f /dev/null"
     entrypoint: ""
-

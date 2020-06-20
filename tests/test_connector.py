@@ -1,7 +1,6 @@
 import os
 from urllib import request
 
-
 from src.caiso_connector import delete_data_files, download_csv_file, unzip_csv
 from src.helpers import ZIP_DIRECTORY, generate_url
 

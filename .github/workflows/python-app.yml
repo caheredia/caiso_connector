@@ -34,7 +34,7 @@ jobs:
           black --check .
       - name: Check isort
         run: |
-          isort --recursive --diff
+          isort --recursive --check-only --diff
       - name: Test with pytest
         run: |
           python -m pytest --cov=./ --cov-report=xml  tests

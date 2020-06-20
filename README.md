@@ -8,7 +8,7 @@ This database was chosen because of its ease of install and availability on most
 Code documentation [here](https://caheredia.github.io/caiso_connector/_build/html/index.html)
 ***
 ## Install instructions 
-Below are two methods to install and run this code.
+Prerequisites: [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repo onto your host machine.
 
 ### Run project from Docker container
 1. In a new directory, download code repository 

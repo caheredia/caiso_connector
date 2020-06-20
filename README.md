@@ -8,27 +8,23 @@ This database was chosen because of its ease of install and availability on most
 Code documentation [here](https://caheredia.github.io/caiso_connector/_build/html/index.html)
 ***
 ## Install instructions 
-Prerequisites: [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repo onto your host machine.
 
 ### Run project from Docker container
-1. In a new directory, download code repository 
+1. In a new directory, download [repo](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
     ```shell script
     docker-compose up
     ```
 
-2.  The previous command will build and start the necessary containers. 
+	- The previous command will build and start the necessary containers:
+ 		- *caiso_connector*: contains REST API, and ETL worker
+		- *demo*: plotly dashboard server
 
-    navigate to `http://0.0.0.0:80/docs` to interact with REST API
 
-3. Populate database
-	# TODO update this point and overall flow of instructions 
-    From inside the docker container run step 5 from above. 
+navigate to `http://0.0.0.0:80/docs` to interact with REST API
+
+2. Populate database
+	# TODO update this process
     
-**Useful docker commands, in the cloud or local**
-
-- Find container number `docker ps`
-- Enter container shell `docker exec -it <mycontainer> bash`
-***
 
 # Outputs 
 - This code generates a SQLite database located at `src/lmp.db`
@@ -39,22 +35,20 @@ Prerequisites: [Clone](https://help.github.com/en/github/creating-cloning-and-ar
 
 # Run tests
 ```shell script
-python3 -m pytest tests/
+docker-compose exec web python -m pytest tests
 ```
 which yields the following upon successful run 
 ```shell script
-(caiso) ➜  caiso_connector git:(develop) python3 -m pytest tests/
-========================================================== test session starts ===========================================================
-platform darwin -- Python 3.7.3, pytest-5.3.2, py-1.8.1, pluggy-0.13.1
-rootdir: /Users/cristian/Documents/2019/caiso_connector
-collected 7 items                                                                                                                        
+ ➜  caiso_connector git:(master) docker-compose exec web python -m pytest tests
+============================ test session starts =============================
+platform linux -- Python 3.7.7, pytest-5.3.2, py-1.8.1, pluggy-0.13.1
+rootdir: /code
+collected 7 items
 
-tests/test_api.py .....                                                                                                            [ 71%]
-tests/test_connector.py ..                                                                                                         [100%]
+tests/test_api.py .....                                                [ 71%]
+tests/test_connector.py ..                                             [100%]
 
-=========================================================== 7 passed in 23.89s ===========================================================
-(caiso) ➜  caiso_connector git:(develop) 
-
+============================= 7 passed in 0.65s ==============================
 ```
 
 # References 

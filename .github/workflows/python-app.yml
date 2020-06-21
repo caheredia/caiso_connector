@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: caheredia/caiso-connector:8a02383ccd6905aa1ca2e617b5eef20b8375a361
+    container: caheredia/caiso-connector: f54ee3d895faddc9da02e1f92e7393da016fa42b:
 
     steps:
       - uses: actions/checkout@v2

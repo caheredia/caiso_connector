@@ -16,7 +16,7 @@ if __name__ == "__main__":
     conn = sqlite3.connect(DATABASE_LOCATION)
 
     # Extract
-    for date in pd.date_range("2020-01-01", "2020-01-01"):
+    for date in pd.date_range("2020-01-01", "2020-01-02"):
         start_time = date.isoformat()[:-3].replace("-", "")
         end_time = (date + timedelta(days=1)).isoformat()[:-3].replace("-", "")
         target = generate_url(start_time, end_time)

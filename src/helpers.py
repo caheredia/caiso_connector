@@ -10,7 +10,6 @@ def get_db_location() -> str:
     If the environment variable isn't set then use default.
     """
     location = os.getenv("DATABASE_LOCATION")
-
     if location:
         return location
     else:

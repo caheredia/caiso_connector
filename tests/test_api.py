@@ -1,6 +1,6 @@
 import os
 from starlette.testclient import TestClient
-from src.helpers import TEST_DATABASE_LOCATION
+from src.helpers import TEST_DATABASE_LOCATION, get_db_location
 
 os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION  # isort:skip
 from app.main import app  # isort:skip # noqa
@@ -34,3 +34,7 @@ def test_lmp_no_region_bad_response():
 def test_lmp_mean():
     response = client.get("/lmp/mean/{region}/{day_of_week}")
     assert response.status_code == 422
+
+
+def test_get_db_location():
+    assert TEST_DATABASE_LOCATION == get_db_location()

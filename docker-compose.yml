@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    image: caheredia/caiso-connector:99b487088cb76849dc84cebc7a5be047a0b3501d
+    image: caheredia/caiso-connector:f9ff28934d700a77c203edbf5496573ed1fc1560
     container_name: "caiso-connector"
     ports:
       - "80:80"

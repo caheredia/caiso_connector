@@ -1,6 +1,7 @@
 import sqlite3
 from enum import Enum
 from json import loads
+from sqlalchemy import text, bindparam, String
 
 import pandas as pd
 from fastapi import FastAPI
@@ -40,9 +41,9 @@ async def get_lmp_by_region(region: str):
     """Return the LMP for given region.
     For example region = "AFPR_1_TOT_GEN-APND"
     """
-    data = pd.read_sql_query(
-        "select * from lmp WHERE node == %(region)s", {"region": region}, conn,
-    ).to_json(orient="records")
+    stmt = text("select * from lmp WHERE node == region:region")
+    stmt = stmt.bindparams(bindparam(region, type_=String))
+    data = pd.read_sql_query(stmt, conn,).to_json(orient="records")
     return loads(data)
 
 

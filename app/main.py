@@ -41,10 +41,7 @@ async def get_lmp_by_region(region: str):
     For example region = "AFPR_1_TOT_GEN-APND"
     """
     data = pd.read_sql_query(
-        f"""select * from lmp
-        WHERE node == '{region}';
-        """,
-        conn,
+        "select * from lmp WHERE node == %(region)s", {"region": region}, conn,
     ).to_json(orient="records")
     return loads(data)
 

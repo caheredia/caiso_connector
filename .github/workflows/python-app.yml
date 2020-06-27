@@ -30,9 +30,6 @@ jobs:
         run: |
           python -m pytest --cov=./ --cov-report=xml  tests
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1.0.7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
-          flags: unittests
-
+        run: | 
+          codecov --token=43482434-e2df-473d-a040-6dc9079df62e
+ 

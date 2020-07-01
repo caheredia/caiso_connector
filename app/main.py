@@ -3,10 +3,8 @@ from enum import Enum
 from json import loads
 
 import pandas as pd
-import sqlalchemy as db
 from fastapi import FastAPI
 from pydantic import BaseModel
-from sqlalchemy import String, bindparam, text
 
 from src.helpers import get_db_location
 

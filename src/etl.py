@@ -1,26 +1,27 @@
-import sqlite3
 from datetime import timedelta
 
 import pandas as pd
-
+from sql_app import models
+from sql_app.database import engine
 from src.caiso_connector import (
     delete_data_files,
     download_csv_file,
     find_csv_files,
     unzip_csv,
 )
-from src.helpers import DATABASE_LOCATION, ZIP_DIRECTORY, generate_url
+from src.helpers import ZIP_DIRECTORY, generate_url
+
+models.Base.metadata.create_all(bind=engine)
+
 
 if __name__ == "__main__":
-    # Connect to database
-    conn = sqlite3.connect(DATABASE_LOCATION)
 
     # Extract
     for date in pd.date_range("2020-01-01", "2020-01-02"):
         start_time = date.isoformat()[:-3].replace("-", "")
         end_time = (date + timedelta(days=1)).isoformat()[:-3].replace("-", "")
         target = generate_url(start_time, end_time)
-        download_csv_file(target, ZIP_DIRECTORY)
+        # download_csv_file(target, ZIP_DIRECTORY)
         unzip_csv(ZIP_DIRECTORY)
 
         # Transform
@@ -34,6 +35,8 @@ if __name__ == "__main__":
 
         # Load
         print(f"adding {start_time}")
-        df.to_sql("lmp", conn, if_exists="append", index=False)
+        # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_sql.html#r689dfd12abe5-1
+        # writes all rows at once
+        df.to_sql("lmp", engine, if_exists="append", index=False)
 
-        delete_data_files(ZIP_DIRECTORY)
+        # delete_data_files(ZIP_DIRECTORY)

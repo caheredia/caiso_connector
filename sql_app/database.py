@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from src.helpers import DATABASE_LOCATION
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///src/lmp.db"
+SQLALCHEMY_DATABASE_URL = DATABASE_LOCATION
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}

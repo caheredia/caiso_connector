@@ -21,7 +21,7 @@ if __name__ == "__main__":
         start_time = date.isoformat()[:-3].replace("-", "")
         end_time = (date + timedelta(days=1)).isoformat()[:-3].replace("-", "")
         target = generate_url(start_time, end_time)
-        # download_csv_file(target, ZIP_DIRECTORY)
+        download_csv_file(target, ZIP_DIRECTORY)
         unzip_csv(ZIP_DIRECTORY)
 
         # Transform

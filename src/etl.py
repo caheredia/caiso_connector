@@ -5,7 +5,6 @@ import pandas as pd
 from sql_app import models
 from sql_app.database import engine
 from src.caiso_connector import (
-    delete_data_files,
     download_csv_file,
     find_csv_files,
     unzip_csv,
@@ -39,5 +38,3 @@ if __name__ == "__main__":
         # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_sql.html#r689dfd12abe5-1
         # writes all rows at once
         df.to_sql("lmp", engine, if_exists="append", index=False)
-
-        # delete_data_files(ZIP_DIRECTORY)

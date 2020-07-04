@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from src.helpers import DATABASE_LOCATION
+from src.helpers import get_db_location
 
-SQLALCHEMY_DATABASE_URL = DATABASE_LOCATION
+SQLALCHEMY_DATABASE_URL = get_db_location()
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}

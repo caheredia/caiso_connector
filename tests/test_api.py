@@ -1,8 +1,26 @@
 import os
+
+import pandas as pd
 from starlette.testclient import TestClient
-from src.helpers import TEST_DATABASE_LOCATION, get_db_location
+from src.caiso_connector import find_csv_files
+from src.helpers import (
+    TEST_DATABASE_LOCATION,
+    DATA,
+)
 
 os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION  # isort:skip
+from src.helpers import get_db_location  # isort:skip
+
+
+# Seed Database
+lmp_columns = ["INTERVALSTARTTIME_GMT", "NODE", "LMP_TYPE", "MW"]
+file = find_csv_files(DATA)[0]
+df = pd.read_csv(file, usecols=lmp_columns).rename(
+    columns={"INTERVALSTARTTIME_GMT": "time", "NODE": "node", "MW": "mw"}
+)
+df.time = pd.to_datetime(df.time)
+df = df[df["LMP_TYPE"] == "LMP"].drop(columns=["LMP_TYPE"])
+
 from app.main import app  # isort:skip # noqa
 
 client = TestClient(app)

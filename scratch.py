@@ -1,7 +1,8 @@
 import datetime
-from sql_app import models
-from sql_app.database import engine, SessionLocal
+
 import pandas as pd
+from sql_app import models
+from sql_app.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 db = SessionLocal()

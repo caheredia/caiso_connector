@@ -1,36 +1,31 @@
-import sqlite3
 from enum import Enum
 from json import loads
 
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
-
-from src.helpers import get_db_location
+from sql_app.database import engine
 
 app = FastAPI()
 
 
-conn = sqlite3.connect(get_db_location())
-
-
 @app.get("/row-count")
 async def get_row_count():
-    count = pd.read_sql_query("""select COUNT(*) from lmp;""", conn).values[0][0]
+    count = pd.read_sql_query("""select COUNT(*) from lmp;""", engine).values[0][0]
     return {"row-count": int(count)}
 
 
 @app.get("/time-ranges")
 async def get_time_ranges():
-    min_time = pd.read_sql_query("""select min(time) from lmp;""", conn).values[0][0]
-    max_time = pd.read_sql_query("""select max(time) from lmp;""", conn).values[0][0]
+    min_time = pd.read_sql_query("""select min(time) from lmp;""", engine).values[0][0]
+    max_time = pd.read_sql_query("""select max(time) from lmp;""", engine).values[0][0]
     return {"oldest timestamp": min_time, "newest timestamp": max_time}
 
 
 @app.get("/lmp")
 async def get_lmp_regions():
     regions = pd.read_sql_query(
-        """select distinct node from lmp;""", conn
+        """select distinct node from lmp;""", engine
     ).values.tolist()
     return {"regions": regions}
 
@@ -44,7 +39,7 @@ async def get_lmp_by_region(region: str):
         f"""select * from lmp
         WHERE node == '{region}';
         """,
-        conn,
+        engine,
     ).to_json(orient="records")
     return loads(data)
 
@@ -83,7 +78,7 @@ async def get_mean_lmp_region_and_day_of_week(region: str, day_of_week: DayOfWee
     """
 
     df_afpr = pd.read_sql_query(
-        f"""select * from lmp WHERE node == '{region}';""", conn
+        f"""select * from lmp WHERE node == '{region}';""", engine
     )
     df_afpr.time = pd.to_datetime(df_afpr.time)
     mean_lmp = df_afpr[

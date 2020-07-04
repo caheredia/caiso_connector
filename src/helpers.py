@@ -3,7 +3,7 @@ import os
 DATABASE_LOCATION = "sqlite:///src/lmp.db"
 TEST_DATABASE_LOCATION = "sqlite:///tests/test_lmp.db"
 ZIP_DIRECTORY = "src/temp_data"
-DATA = "src/data"
+SEED_FILE = "src/data/seed.csv"
 
 
 def get_db_location() -> str:

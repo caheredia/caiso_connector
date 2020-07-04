@@ -5,7 +5,7 @@ from starlette.testclient import TestClient
 from src.caiso_connector import find_csv_files
 from src.helpers import (
     TEST_DATABASE_LOCATION,
-    DATA,
+    SEED_FILE,
 )
 
 os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION  # isort:skip
@@ -14,8 +14,7 @@ from sql_app.database import engine  # isort:skip # noqa
 
 # Seed Database for tests
 lmp_columns = ["INTERVALSTARTTIME_GMT", "NODE", "LMP_TYPE", "MW"]
-file = find_csv_files(DATA)[0]
-df = pd.read_csv(file, usecols=lmp_columns).rename(
+df = pd.read_csv(SEED_FILE, usecols=lmp_columns).rename(
     columns={"INTERVALSTARTTIME_GMT": "time", "NODE": "node", "MW": "mw"}
 )
 df.time = pd.to_datetime(df.time)

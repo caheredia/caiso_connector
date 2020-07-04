@@ -9,10 +9,10 @@ from src.helpers import (
 )
 
 os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION  # isort:skip
-from sql_app.database import engine  # isort:skip
+from sql_app.database import engine  # isort:skip # noqa
 
 
-# Seed Database
+# Seed Database for tests
 lmp_columns = ["INTERVALSTARTTIME_GMT", "NODE", "LMP_TYPE", "MW"]
 file = find_csv_files(DATA)[0]
 df = pd.read_csv(file, usecols=lmp_columns).rename(
@@ -20,7 +20,7 @@ df = pd.read_csv(file, usecols=lmp_columns).rename(
 )
 df.time = pd.to_datetime(df.time)
 df = df[df["LMP_TYPE"] == "LMP"].drop(columns=["LMP_TYPE"])
-df.to_sql("lmp", engine, if_exists="append", index=False)
+df.to_sql("lmp", engine, if_exists="replace", index=False)
 
 from app.main import app  # isort:skip # noqa
 

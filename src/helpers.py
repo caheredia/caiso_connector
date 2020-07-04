@@ -1,7 +1,7 @@
 import os
 
-DATABASE_LOCATION = "src/lmp.db"
-TEST_DATABASE_LOCATION = "tests/test_lmp.db"
+DATABASE_LOCATION = "sqlite:///src/lmp.db"
+TEST_DATABASE_LOCATION = "sqlite:///tests/test_lmp.db"
 ZIP_DIRECTORY = "src/temp_data"
 
 

@@ -16,5 +16,3 @@ for user in db.query(models.Lmp)[0:3]:
     print(user.time)
     print(user.node)
     print(user.mw)
-count = pd.read_sql_query("""select COUNT(*) from lmp;""", engine).values[0][0]
-print(count)

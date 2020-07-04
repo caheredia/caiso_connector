@@ -4,6 +4,7 @@ from json import loads
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
+
 from sql_app.database import engine
 
 app = FastAPI()

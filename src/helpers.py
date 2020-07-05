@@ -46,6 +46,13 @@ def generate_url(start_time: str, end_time: str) -> str:
 def move_file(file_path: str, new_directory: str = DATA_DIR) -> None:
     """
     Move file into desired directory.
+
+    Parameters
+    ----------
+    file_path :
+        relative or absolute file path
+    new_directory :
+        target directory for move
     """
     file_name = os.path.split(file_path)[-1]
     new_path = os.path.join(new_directory, file_name)

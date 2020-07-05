@@ -9,7 +9,7 @@ from src.caiso_connector import (
     find_csv_files,
     unzip_csv,
 )
-from src.helpers import ZIP_DIRECTORY, generate_url
+from src.helpers import ZIP_DIRECTORY, generate_url, move_file
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -38,3 +38,6 @@ if __name__ == "__main__":
         # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_sql.html#r689dfd12abe5-1
         # writes all rows at once
         df.to_sql("lmp", engine, if_exists="append", index=False)
+
+        # clean up
+        move_file(file_path=file)

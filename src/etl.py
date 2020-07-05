@@ -1,6 +1,7 @@
 from datetime import timedelta
 
 import pandas as pd
+
 from sql_app import models
 from sql_app.database import engine
 from src.caiso_connector import (

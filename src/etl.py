@@ -1,10 +1,10 @@
 from datetime import timedelta
 
 import pandas as pd
-
 from sql_app import models
 from sql_app.database import engine
 from src.caiso_connector import (
+    delete_data_files,
     download_csv_file,
     find_csv_files,
     unzip_csv,
@@ -41,3 +41,4 @@ if __name__ == "__main__":
 
         # clean up
         move_file(file_path=file)
+        delete_data_files(ZIP_DIRECTORY)

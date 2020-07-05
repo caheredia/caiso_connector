@@ -10,7 +10,7 @@ from src.caiso_connector import (
     find_csv_files,
     unzip_csv,
 )
-from src.helpers import ZIP_DIRECTORY, generate_url
+from src.helpers import ZIP_DIRECTORY, generate_url, move_file
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         start_time = date.isoformat()[:-3].replace("-", "")
         end_time = (date + timedelta(days=1)).isoformat()[:-3].replace("-", "")
         target = generate_url(start_time, end_time)
-        # download_csv_file(target, ZIP_DIRECTORY)
+        download_csv_file(target, ZIP_DIRECTORY)
         unzip_csv(ZIP_DIRECTORY)
 
         # Transform
@@ -40,4 +40,6 @@ if __name__ == "__main__":
         # writes all rows at once
         df.to_sql("lmp", engine, if_exists="append", index=False)
 
-        # delete_data_files(ZIP_DIRECTORY)
+        # clean up
+        move_file(file_path=file)
+        delete_data_files(ZIP_DIRECTORY)

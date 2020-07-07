@@ -3,14 +3,14 @@ import tempfile
 from urllib import request
 
 import pandas as pd
-
-from src.caiso_connector import (
+from src.caiso_connector import generate_url
+from src.helpers import (
+    ZIP_DIRECTORY,
     delete_data_files,
     download_csv_file,
     find_csv_files,
     unzip_csv,
 )
-from src.helpers import ZIP_DIRECTORY, generate_url
 
 
 class MockRetrieve:

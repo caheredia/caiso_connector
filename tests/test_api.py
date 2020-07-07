@@ -1,12 +1,8 @@
 import os
 
 import pandas as pd
+from src.helpers import SEED_FILE, TEST_DATABASE_LOCATION
 from starlette.testclient import TestClient
-from src.caiso_connector import find_csv_files
-from src.helpers import (
-    TEST_DATABASE_LOCATION,
-    SEED_FILE,
-)
 
 os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION  # isort:skip
 from sql_app.database import engine  # isort:skip # noqa

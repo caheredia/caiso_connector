@@ -1,7 +1,6 @@
 import os
 
 import pandas as pd
-from starlette.testclient import TestClient
 from src.helpers import TEST_DATABASE_LOCATION, SEED_FILE
 from sql_app import models
 from sql_app.crud import get_lmps

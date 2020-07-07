@@ -1,6 +1,3 @@
-import os
-
-
 def generate_url(start_time: str, end_time: str) -> str:
     """Generates a CAISO OASIS url based on start and time.
 
@@ -24,4 +21,3 @@ def generate_url(start_time: str, end_time: str) -> str:
 
     target_url = base_url + query + time_range + version
     return target_url
-

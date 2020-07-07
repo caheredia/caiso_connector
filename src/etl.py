@@ -4,13 +4,15 @@ import pandas as pd
 
 from sql_app import models
 from sql_app.database import engine
-from src.caiso_connector import (
+from src.helpers import (
     delete_data_files,
     download_csv_file,
     find_csv_files,
     unzip_csv,
+    ZIP_DIRECTORY,
+    move_file,
 )
-from src.helpers import ZIP_DIRECTORY, generate_url, move_file
+from src.caiso_connector import generate_url
 
 models.Base.metadata.create_all(bind=engine)
 

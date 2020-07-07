@@ -3,7 +3,7 @@ import zipfile
 from urllib import request
 
 DATABASE_LOCATION = "sqlite:///src/lmp.db"
-TEST_DATABASE_LOCATION = "sqlite:///:memory:?cache=shared"
+TEST_DATABASE_LOCATION = "sqlite:///:memory:"
 ZIP_DIRECTORY = "src/temp_data"
 SEED_FILE = "src/data/seed.csv"
 DATA_DIR = "src/data"

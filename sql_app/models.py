@@ -1,6 +1,7 @@
 from sqlalchemy import REAL, TEXT, TIMESTAMP, Column, Integer
+from sqlalchemy.ext.declarative import declarative_base
 
-from .database import Base
+Base = declarative_base()
 
 
 class Lmp(Base):

@@ -2,11 +2,11 @@ from typing import Any, Generator
 
 import pytest
 from fastapi import FastAPI
-from fastapi.applications.testclient import TestClient
+from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from src.helpers import TEST_DATABASE_LOCATION
-from sql_app.main import app
+from sql_app.main import app, get_db
 from sql_app.models import Base
 
 # Default to using sqlite in memory for fast tests.
@@ -71,6 +71,9 @@ def client(app: FastAPI, db_session: Session) -> Generator[TestClient, Any, None
     app.dependency_overrides[get_db] = _get_test_db
     with TestClient(app) as client:
         yield client
+
+
+# TODO paste the db session into app_client function above
 
 
 # @pytest.fixture(scope="function")

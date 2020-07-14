@@ -1,13 +1,13 @@
-import os
-
 import pandas as pd
 import pytest
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from src.helpers import TEST_DATABASE_LOCATION
 
 # Default to using sqlite in memory for fast tests.
 # Can be overridden by environment variable for testing in CI against other
 # database engines
-SQLALCHEMY_DATABASE_URL = os.setenv("DATABASE_LOCATION", TEST_DATABASE_LOCATION)
+SQLALCHEMY_DATABASE_URL = TEST_DATABASE_LOCATION
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}

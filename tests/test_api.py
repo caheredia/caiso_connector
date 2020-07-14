@@ -20,6 +20,7 @@ df.to_sql("lmp", engine, if_exists="replace", index=False)
 from app.main import app  # isort:skip # noqa
 
 client = TestClient(app)
+# TODO yield client
 
 
 def test_get_row_count():

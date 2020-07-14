@@ -3,8 +3,6 @@ import tempfile
 
 from src.helpers import TEST_DATABASE_LOCATION, get_db_location, move_file
 
-os.environ["DATABASE_LOCATION"] = TEST_DATABASE_LOCATION
-
 
 def test_get_db_location():
     """
